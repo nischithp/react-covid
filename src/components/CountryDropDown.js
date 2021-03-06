@@ -16,7 +16,7 @@ function CountryDropDown(props) {
   }
 
   useEffect(() => {
-    
+
     if (value !== '') {
       let vaccinationBaseURL = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${value.value}?lastdays=30`
       axios.get(vaccinationBaseURL)
@@ -27,11 +27,11 @@ function CountryDropDown(props) {
 
   }, [value])
   return (
-    
+
     <>
-      <Select options={options} value={value} onChange={changeHandler}></Select>
+      <Select className="max-w-xs" options={options} value={value} onChange={changeHandler}></Select>
       {
-        Object.keys(vaccineResults).length === 0 ? <Card result="-1" />: <Card result={vaccineResults}></Card> 
+        Object.keys(vaccineResults).length === 0 ? <Card result="-1" /> : <Card result={vaccineResults}></Card>
       }
     </>
   )
