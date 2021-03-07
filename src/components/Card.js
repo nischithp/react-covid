@@ -9,52 +9,46 @@ export function Card(props) {
         return <span>Please select a country</span>
     }
 
-    
-
-    
-
-    // console.log("Result kelage aithi")
-    // console.table(props.result)
-    // console.log("Timeline:"+JSON.stringify(props.result.timeline))
     var timeline = Object.keys(props.result.timeline)
     var vaccinations = timeline.map(date => props.result.timeline[date])
 
-    // console.log("Vaccinations: >>>>>"+vaccinations)
-    const options = {
+    const chartParams = {
         title: {
             text: 'Vaccinations'
         },
         series: [{
-            name: 'Vaccinations',
             type: 'line',
-            data: vaccinations
+            data: vaccinations,
+            showInLegend: false,
         }],
+        yAxis: {
+            title: {
+                text: 'Vaccinations',
+                style: {
+                    color: 'magenta',
+                }
+            }
+        },
         xAxis: {
             type: 'datetime',
-            categories: timeline
+            categories: timeline,
+            title: {
+                text: 'Date',
+                style: {
+                    color: 'blue'
+                }
+            }
         }
     }
-    
-
     return (
-
-        <div>
-            <div className="rounded overflow-hidden shadow-lg">
-                <div className="px-6 py-4">
-                    Country: <h1 className="font-bold text-purple-500 text-xl mb-2">{props.result.country}</h1>
-                    <div className="font-bold text-yellow-500 text-xl mb-2">
-                        {/* <ul>
-                            {timeline.map((item) => {
-                                return <li>{`${item} : ${props.result.timeline[item]}`}</li>
-                            })}
-                        </ul> */}
-                        <div>
-                            <HighchartsReact
-                                highcharts={Highcharts}
-                                options={options}
-                            />
-                        </div>
-                    </div>
+        <div className="px-6 py-4">
+            <h1 className="font-bold text-purple-500 text-xl mb-2">{props.result.country}</h1>
+            <div className="font-bold text-yellow-500 text-xl mb-2">
+                <div>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={chartParams}
+                    />
                 </div>
             </div>
         </div>

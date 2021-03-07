@@ -7,16 +7,11 @@ function App() {
   return (
     <div>
       <center>
-        {/* <API country="India"></API> */}
-        
-        <div className="px-9 py-8 max-h-10 max-w-6xl">
-        Select Country:<CountryDropDown></CountryDropDown>
+        <div className="container px-9 py-8 my-6 max-w-6xl rounded-xl shadow-xl">
+          <h1 className="text-2xl font-bold text-blue-600">Select Country</h1>
+          <CountryDropDown></CountryDropDown>
         </div>
-        {/* <Card></Card> */}
-
-
       </center>
-
     </div>
   );
 };
